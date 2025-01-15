@@ -1,0 +1,69 @@
+.cust-card {
+    width: 40%;
+    height: 200px;
+    background-color: lavender;
+    display: flex;
+    gap: 100px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.cust-card .icon {
+    font-size: 30px;
+    color: var(--red);
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.cust-card .icon:hover {
+    transform: translateY(-2px);
+    color: violet;
+}
+
+.cust-card .details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+}
+
+.cust-card .cust-name {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+
+}
+
+.cust-card .status {
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.025rem;
+    transition: all 0.3s ease;
+}
+
+
+.cust-card .cust-name h1 {
+    color: purple;
+}
+
+.cust-card .cust-details {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cust-card .cust-details p {
+    font-size: 1.2rem;
+    font-weight: 800;
+}
