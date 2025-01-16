@@ -22,3 +22,6 @@ The page navigates to the all customers page when a customer is created.
 Implementing functionalities to manage customer data such as name, email, phone number, and address. 
 Allow users to add, view, update, and delete customer records.
 
+# Lab 2
+
+<code>[Посилання на коміт](https://github.com/PudchenkoAlexei/CRM/commit/3c6c8d3432909390c1a6431a749ab2278d3c9e64)</code>
