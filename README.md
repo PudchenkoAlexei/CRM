@@ -67,22 +67,22 @@ erDiagram
     USER ||--o{ CUSTOMER : manages
     
     USER {
-        string _id PK "ObjectId"
-        string username "unique, required"
-        string password "required"
-        string email "required"
+        string _id PK 
+        string username 
+        string password 
+        string email 
         datetime createdAt
         datetime updatedAt
     }
     
     CUSTOMER {
-        string _id PK "ObjectId"
-        string name "required"
-        string company FK "ref: User"
-        string service "required"
-        string email "required"
-        string phone "required"
-        string status "default: not started"
+        string _id PK 
+        string name 
+        string company FK 
+        string service 
+        string email 
+        string phone 
+        string status 
         datetime createdAt
         datetime updatedAt
     }
