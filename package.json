@@ -1,0 +1,33 @@
+{
+  "name": "crm-project",
+  "version": "1.0.0",
+  "description": "CRM application",
+  "scripts": {
+    "fmt": "prettier --write \"{server,client}/**/*.{js,json,css,jsx}\"",
+    "fmt:check": "prettier --check \"{server,client}/**/*.{js,json,css,jsx}\"",
+    "lint": "eslint \"{server,client}/**/*.{js,jsx}\"",
+    "fix": "eslint --fix \"{server,client}/**/*.{js,jsx}\""
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
+    "husky": "^8.0.3",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run fmt",
+      "pre-push": "npm run lint && npm run fmt"
+    }
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "private": true
+}
