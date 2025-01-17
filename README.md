@@ -26,6 +26,8 @@ Allow users to add, view, update, and delete customer records.
 
 <code>[Посилання на коміт](https://github.com/PudchenkoAlexei/CRM/commit/3c6c8d3432909390c1a6431a749ab2278d3c9e64)</code>
 
+стиль коду - Airbnb
+
 # Lab 3 (ці діаграми є розширеною версією застосунку а не того що зараз реалізовано)
 
 CRM architecture diagram
