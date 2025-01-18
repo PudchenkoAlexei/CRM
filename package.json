@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "CRM application",
   "scripts": {
-    "fmt": "prettier --write \"{server}/**/*.{js,json,css,jsx}\"",
-    "fmt:check": "prettier --check \"{server}/**/*.{js,json,css,jsx}\"",
-    "lint": "eslint \"{server}/**/*.{js,jsx}\"",
-    "fix": "eslint --fix \"{server}/**/*.{js,jsx}\""
+    "fmt": "prettier --write",
+    "fmt:check": "prettier --check",
+    "lint": "eslint .",
+    "fix": "eslint --fix"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
