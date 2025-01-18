@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "CRM application",
   "scripts": {
-    "fmt": "prettier --write",
+    "fmt": "prettier --write \"**/*.{js,json,md}\"",
     "fmt:check": "prettier --check \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "fix": "eslint --fix",

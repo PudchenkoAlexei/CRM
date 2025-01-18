@@ -30,6 +30,6 @@
         "allow": ["_id", "_doc"]
       }
     ],
-    "consistent-return": "off" 
+    "consistent-return": "off"
   }
 }

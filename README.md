@@ -1,6 +1,7 @@
 # Customer Relationship Management (CRM) System with Node.js and Express.js
 
 ## Prerequisites:
+
 Node.js
 Express
 MongoDB
@@ -8,18 +9,21 @@ React
 JavaScript
 
 ## Functionalities:
+
 User Authentication and Authorization
 Companies that want to use the CRM Portal can register on the application and access the functionalities by signing in.
 JWT, JsonWebToken and bcryptjs are some packages used for implementing smooth authorization.
 Context API helps to maintain the state of the user that has logged in.
 
 ## Adding Customers:
+
 The company can easily add new customers and details about them.
 A form is created with the post method to implement this functionality. Status can be selected from a drop down.
 The page navigates to the all customers page when a customer is created.
 
 ## Customer Management:
-Implementing functionalities to manage customer data such as name, email, phone number, and address. 
+
+Implementing functionalities to manage customer data such as name, email, phone number, and address.
 Allow users to add, view, update, and delete customer records.
 
 # Lab 2
@@ -59,21 +63,21 @@ flowchart TB
             CustomerEvents["Customer Event Handler"]
             LeadTracking["Lead Tracking"]
         end
-        
+
         subgraph UserModule["User Management Module"]
             UserService["User Service"]
             UserController["User Controller"]
             AuthService["Auth Service"]
             CompanyProfile["Company Profile"]
         end
-        
+
         subgraph AnalyticsModule["Analytics Module"]
             AnalyticsService["Analytics Service"]
             ReportGenerator["Report Generator"]
             Dashboard["Dashboard Analytics"]
             Forecasting["Sales Forecasting"]
         end
-        
+
         subgraph CommunicationModule["Communication Module"]
             EmailService["Email Service"]
             NotificationService["Notification Service"]
@@ -94,12 +98,12 @@ flowchart TB
             Redis["Redis Cache"]
             MemCache["Memory Cache"]
         end
-        
+
         subgraph DB["Database Layer"]
             MongoDB["MongoDB Primary"]
             MongoReplica["MongoDB Replica"]
         end
-        
+
         subgraph Storage["Document Storage"]
             S3["AWS S3"]
             LocalStorage["Local Storage"]
@@ -118,25 +122,25 @@ flowchart TB
     WebApp --> Gateway
     MobileApp --> Gateway
     Desktop --> Gateway
-    
+
     %% API Layer connections
     Gateway --> RateLimit
     Gateway --> Logger
     Gateway --> Security
-    
+
     %% Security to Core connections
     Security --> CustomerModule
     Security --> UserModule
     Security --> AnalyticsModule
     Security --> WorkflowModule
-    
+
     %% Core Module interconnections
     CustomerModule --> CommunicationModule
     CustomerModule --> AnalyticsModule
     CustomerModule --> WorkflowModule
     UserModule --> CommunicationModule
     WorkflowModule --> CommunicationModule
-    
+
     %% Core to Data connections
     CustomerModule --> Cache
     CustomerModule --> DB
@@ -144,7 +148,7 @@ flowchart TB
     AnalyticsModule --> DB
     AnalyticsModule --> Cache
     WorkflowModule --> DB
-    
+
     %% External service connections
     CommunicationModule --> EmailProvider
     CommunicationModule --> SMSProvider
@@ -156,7 +160,7 @@ flowchart TB
     classDef module fill:#f9f,stroke:#333,stroke-width:2px
     classDef service fill:#bbf,stroke:#333,stroke-width:2px
     classDef database fill:#dfd,stroke:#333,stroke-width:2px
-    
+
     class CustomerModule,UserModule,AnalyticsModule,CommunicationModule,WorkflowModule module
     class Gateway,RateLimit,Logger,JWT,CORS,Validator,Authorization service
     class MongoDB,MongoReplica,Redis,MemCache database
@@ -177,7 +181,7 @@ erDiagram
     CUSTOMER ||--o{ PIPELINE_STAGE : belongs_to
     COMPANY ||--o{ TEMPLATE : owns
     TEMPLATE ||--o{ COMMUNICATION : uses
-    
+
     COMPANY {
         string _id PK "ObjectId"
         string name "required"
@@ -188,7 +192,7 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
-    
+
     USER {
         string _id PK "ObjectId"
         string company_id FK "ref: Company"
@@ -202,7 +206,7 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
-    
+
     CUSTOMER {
         string _id PK "ObjectId"
         string company_id FK "ref: Company"
