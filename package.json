@@ -7,7 +7,8 @@
     "fmt:check": "prettier --check \"**/*.{js,json,md}\"",
     "lint": "eslint .",
     "fix": "eslint --fix",
-    "test": "echo \"No tests implemented yet\" && exit 0"
+    "test": "echo \"No tests implemented yet\" && exit 0",
+    "build": "echo 'No build step required for Node.js app'"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
