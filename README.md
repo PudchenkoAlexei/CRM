@@ -2,6 +2,8 @@
 
 https://github.com/PudchenkoAlexei/CRM/tree/master/server/tests
 
+https://github.com/PudchenkoAlexei/CRM/actions/runs/12854569629/job/35839090034
+
 # Customer Relationship Management (CRM) System with Node.js and Express.js
 
 ## Prerequisites:
