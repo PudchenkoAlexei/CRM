@@ -4,16 +4,21 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import Customer from '../models/Customer.js';
 import { register, login } from '../controllers/user.js';
-import { createCustomer, deleteCustomer, getCustomers, updateCustomer } from '../controllers/customer.js';
+import {
+  createCustomer,
+  deleteCustomer,
+  getCustomers,
+  updateCustomer,
+} from '../controllers/customer.js';
 
 jest.mock('bcryptjs', () => ({
   genSaltSync: jest.fn(() => 'salt'),
   hashSync: jest.fn(() => 'hashedPassword'),
-  compare: jest.fn(() => true)
+  compare: jest.fn(() => true),
 }));
 
 jest.mock('jsonwebtoken', () => ({
-  sign: jest.fn(() => 'token')
+  sign: jest.fn(() => 'token'),
 }));
 
 jest.mock('../models/User.js');
@@ -61,50 +66,55 @@ describe('Server Tests', () => {
 
       expect(User.findOne).toHaveBeenCalledWith({ email: req.body.email });
       expect(res.status).toHaveBeenCalledWith(409);
-      expect(res.send).toHaveBeenCalledWith({ message: 'User with given email already exists' });
+      expect(res.send).toHaveBeenCalledWith({
+        message: 'User with given email already exists',
+      });
     });
 
     it('should login user successfully', async () => {
-        const user = { 
-          _id: 'userId', 
-          username: 'testuser', 
-          password: 'hashedPassword', 
-          isAdmin: false, 
-          _doc: {
-            username: 'testuser',
-            email: 'test@example.com',
-            password: 'hashedPassword',
-          }
-        };
-      
-        User.findOne = jest.fn().mockResolvedValue(user);
-        bcrypt.compare = jest.fn().mockResolvedValue(true);
-        jwt.sign = jest.fn().mockReturnValue('token');
-      
-        await login(req, res, next);
-      
-        expect(User.findOne).toHaveBeenCalledWith({ username: req.body.username });
-      
-        expect(bcrypt.compare).toHaveBeenCalledWith(req.body.password, user.password);
-      
-        expect(jwt.sign).toHaveBeenCalledWith(
-          { id: user._id, isAdmin: user.isAdmin },
-          process.env.JWT
-        );
-      
-        expect(res.status).toHaveBeenCalledWith(200);
-      
-        expect(res.json).toHaveBeenCalledWith({
-          details: { username: 'testuser', email: 'test@example.com' },
-          isAdmin: false,
-        });
-      
-        expect(res.cookie).toHaveBeenCalledWith('access_token', 'token', {
-          httpOnly: true,
-        });
+      const user = {
+        _id: 'userId',
+        username: 'testuser',
+        password: 'hashedPassword',
+        isAdmin: false,
+        _doc: {
+          username: 'testuser',
+          email: 'test@example.com',
+          password: 'hashedPassword',
+        },
+      };
+
+      User.findOne = jest.fn().mockResolvedValue(user);
+      bcrypt.compare = jest.fn().mockResolvedValue(true);
+      jwt.sign = jest.fn().mockReturnValue('token');
+
+      await login(req, res, next);
+
+      expect(User.findOne).toHaveBeenCalledWith({
+        username: req.body.username,
       });
-      
-      
+
+      expect(bcrypt.compare).toHaveBeenCalledWith(
+        req.body.password,
+        user.password,
+      );
+
+      expect(jwt.sign).toHaveBeenCalledWith(
+        { id: user._id, isAdmin: user.isAdmin },
+        process.env.JWT,
+      );
+
+      expect(res.status).toHaveBeenCalledWith(200);
+
+      expect(res.json).toHaveBeenCalledWith({
+        details: { username: 'testuser', email: 'test@example.com' },
+        isAdmin: false,
+      });
+
+      expect(res.cookie).toHaveBeenCalledWith('access_token', 'token', {
+        httpOnly: true,
+      });
+    });
 
     it('should return error for invalid username', async () => {
       User.findOne = jest.fn().mockResolvedValue(null);
@@ -115,13 +125,19 @@ describe('Server Tests', () => {
     });
 
     it('should return error for invalid password', async () => {
-      const user = { _id: 'userId', username: 'testuser', password: 'hashedPassword' };
+      const user = {
+        _id: 'userId',
+        username: 'testuser',
+        password: 'hashedPassword',
+      };
       User.findOne = jest.fn().mockResolvedValue(user);
       bcrypt.compare = jest.fn().mockResolvedValue(false);
 
       await login(req, res, next);
 
-      expect(next).toHaveBeenCalledWith(new Error('Wrong password or username!'));
+      expect(next).toHaveBeenCalledWith(
+        new Error('Wrong password or username!'),
+      );
     });
   });
 
