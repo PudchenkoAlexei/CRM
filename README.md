@@ -1,3 +1,7 @@
+# Lab 6
+
+https://github.com/PudchenkoAlexei/CRM/tree/master/server/tests
+
 # Customer Relationship Management (CRM) System with Node.js and Express.js
 
 ## Prerequisites:
