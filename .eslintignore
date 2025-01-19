@@ -1,2 +1,5 @@
 node_modules/
 client/
+jest.config.js
+jest.setup.js
+tests/
